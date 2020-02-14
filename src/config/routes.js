@@ -10,23 +10,29 @@ var _authToken  = null;
 const PANEL_TITLE = 'Silveiro';
 const initRouteTitle = (logged)? PANEL_TITLE : 'Login'; 
 
-const InitialRoute = (logged) => { 
-  let sessionStorage = getSessionStorage()
-    sessionStorage.then((value) => {
-      _authToken = value
+let sessionStorage = getSessionStorage()
+  sessionStorage.then((value) => {
+    _authToken = value
+    // ToastAndroid.show(_authToken, ToastAndroid.LONG);
     if(_authToken){
       logged = true
-    }
-    if(logged){
+      ToastAndroid.show(_authToken, ToastAndroid.LONG);
+    } 
+  })
+
+  const InitialRoute = (logged) => { 
+    if(!logged){
+      ToastAndroid.show('logged', ToastAndroid.LONG);
       return PanelScreen
     } else {
+      ToastAndroid.show('not logged', ToastAndroid.LONG);
       return LoginScreen
-    }
-  })
+  }
 }
 
 const routes = createStackNavigator({
-    Home: {
+
+  Home: {
       screen: InitialRoute(logged), 
       navigationOptions: ({ navigation }) => ({
         title: initRouteTitle,
