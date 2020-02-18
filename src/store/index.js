@@ -9,7 +9,7 @@ const reducer = (state = INITIAL_STATE, action) => {
     case 'REGISTER_SESSION':
       return {
         ...state,
-        _authToken: action.authToken,
+        _authToken: action.token,
       };
     case 'DESTROY_SESSION':
       return {

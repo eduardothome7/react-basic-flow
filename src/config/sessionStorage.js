@@ -5,7 +5,7 @@ export const setSessionStorage = (user) => {
   
   try {
     AsyncStorage.setItem('authToken', user.token);
-  }catch(error){
+  } catch(error) {
     ToastAndroid.show('erro ao salvar sessão'+error, ToastAndroid.LONG);
   }
 }
@@ -22,3 +22,5 @@ export const destroySessionStorage = async() => {
     ToastAndroid.show('erro ao encerrar sessão'+error, ToastAndroid.LONG);
   }
 }
+
+

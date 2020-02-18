@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
-import { destroySessionStorage } from '../config/sessionStorage';
+import { useSelector } from 'react-redux';
  
-function PanelScreen() {
+const PanelScreen = () => {
+  const _authToken = useSelector(state =>  state._authToken)
   return(
     <View>
       <Text>Painel de Atividades</Text>
-      <Button title="Sair" onPress={()=> destroySessionStorage() }></Button>
+      <Text>Olá, {_authToken}</Text>
     </View>
   );
 }

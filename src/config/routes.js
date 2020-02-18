@@ -5,44 +5,44 @@ import LoginScreen from '../screens/LoginScreen';
 import PanelScreen from '../screens/PanelScreen';
 import { getSessionStorage } from '../config/sessionStorage';
 
-var logged      = false;
-var _authToken  = null;
-const PANEL_TITLE = 'Silveiro';
-const initRouteTitle = (logged)? PANEL_TITLE : 'Login'; 
+// var logged      = false;
+// var _authToken  = null;
+// const PANEL_TITLE = 'Silveiro';
+// const initRouteTitle = (logged)? PANEL_TITLE : 'Login'; 
 
-let sessionStorage = getSessionStorage()
-  sessionStorage.then((value) => {
-    _authToken = value
-    // ToastAndroid.show(_authToken, ToastAndroid.LONG);
-    if(_authToken){
-      logged = true
-      ToastAndroid.show(_authToken, ToastAndroid.LONG);
-    } 
-  })
+// let sessionStorage = getSessionStorage()
+//   sessionStorage.then((value) => {
+//     _authToken = value
+//     ToastAndroid.show(_authToken, ToastAndroid.LONG);
+//     if(_authToken){
+//       // logged = true
+//       // ToastAndroid.show(_authToken, ToastAndroid.LONG);
+//     } 
+//   })
 
-  const InitialRoute = (logged) => { 
-    if(!logged){
-      ToastAndroid.show('logged', ToastAndroid.LONG);
-      return PanelScreen
-    } else {
-      ToastAndroid.show('not logged', ToastAndroid.LONG);
-      return LoginScreen
-  }
-}
+//   const InitialRoute = (logged) => { 
+//     if(logged){
+//       ToastAndroid.show('logged', ToastAndroid.LONG);
+//       return PanelScreen
+//     } else {
+//       // ToastAndroid.show('not logged', ToastAndroid.LONG);
+//       return LoginScreen
+//   }
+// }
 
 const routes = createStackNavigator({
 
   Home: {
-      screen: InitialRoute(logged), 
-      navigationOptions: ({ navigation }) => ({
-        title: initRouteTitle,
-      }),
+      screen: LoginScreen, 
+      // navigationOptions: ({ navigation }) => ({
+      //   title: initRouteTitle,
+      // }),
     },
     Panel: {
       screen: PanelScreen,
-      navigationOptions: ({ navigation }) => ({
-        title: PANEL_TITLE,
-      }),
+      // navigationOptions: ({ navigation }) => ({
+      //   title: PANEL_TITLE,
+      // }),
     },
   }, 
 );

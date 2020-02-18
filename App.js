@@ -10,7 +10,9 @@ const AppContainerSidebar = createAppContainer(MyDrawerNavigator);
     
 function App(){
   return(
-    <AppContainerSidebar />
+    <Provider store={store}>
+      <AppContainerSidebar />
+    </Provider>
   )
 }
 
